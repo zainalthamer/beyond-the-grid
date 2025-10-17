@@ -139,6 +139,8 @@ GameObject:
   - component: {fileID: 30010476}
   - component: {fileID: 30010477}
   - component: {fileID: 30010478}
+  - component: {fileID: 30010480}
+  - component: {fileID: 30010481}
   m_Layer: 0
   m_Name: AICapsule
   m_TagString: Untagged
@@ -282,13 +284,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30010469}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.8, y: 0.38, z: 2.74}
+  m_LocalPosition: {x: 2.8, y: 0.447, z: 2.74}
   m_LocalScale: {x: 0.46728325, y: 0.46728325, z: 0.46728325}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1992381142}
+  - {fileID: 476936546}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &30010476
 MonoBehaviour:
@@ -362,7 +364,10 @@ MonoBehaviour:
   alertMessage: 
   textTable: {fileID: 0}
   alertDuration: 0
-  sendMessages: []
+  sendMessages:
+  - gameObject: {fileID: 1332799000}
+    message: ToggleFocus
+    parameter: 
   barkSource: 0
   barkConversation: 
   barkEntryID: -1
@@ -428,6 +433,111 @@ MonoBehaviour:
     onUse:
       m_PersistentCalls:
         m_Calls: []
+--- !u!114 &30010480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30010469}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c48bb19749240c45a99e2f2c74e2f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraTransform: {fileID: 1765579216}
+  cam: {fileID: 1385236952}
+  focusPoint: {fileID: 304836736}
+  player: {fileID: 7553057497742271007}
+  playerController: {fileID: 7553057497742271025}
+  selector: {fileID: 7553057497742271025}
+  moveTime: 0.5
+  focusDistance: 0.35
+  focusFOV: 35
+  normalFOV: 60
+  toggleKey: 101
+  cancelKey: 27
+--- !u!114 &30010481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30010469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a5473918a168c44fa0294bd4d1399f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conversationEvents:
+    onConversationStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationEnd:
+      m_PersistentCalls:
+        m_Calls: []
+    runOnConversationEndEventsAtEndOfFrame: 0
+    onConversationCancelled:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationLineEarly:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationLine:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationLineEnd:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationLineCancelled:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationResponseMenu:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationResponseMenuTimeout:
+      m_PersistentCalls:
+        m_Calls: []
+    onLinkedConversationStart:
+      m_PersistentCalls:
+        m_Calls: []
+  barkEvents:
+    onBarkStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onBarkEnd:
+      m_PersistentCalls:
+        m_Calls: []
+    onBarkLine:
+      m_PersistentCalls:
+        m_Calls: []
+  sequenceEvents:
+    onSequenceStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onSequenceEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  questEvents:
+    onQuestStateChange:
+      m_PersistentCalls:
+        m_Calls: []
+    onQuestTrackingEnabled:
+      m_PersistentCalls:
+        m_Calls: []
+    onQuestTrackingDisabled:
+      m_PersistentCalls:
+        m_Calls: []
+    onUpdateQuestTracker:
+      m_PersistentCalls:
+        m_Calls: []
+  pauseEvents:
+    onDialogueSystemPause:
+      m_PersistentCalls:
+        m_Calls: []
+    onDialogueSystemUnpause:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &36150718
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,7 +567,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &143753161
 GameObject:
@@ -613,6 +723,53 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0928649, y: 1, z: 1.0371693}
   m_Center: {x: 0.028549038, y: 0, z: 0.018584691}
+--- !u!1 &304836735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 304836736}
+  - component: {fileID: 304836737}
+  m_Layer: 0
+  m_Name: IrisFocusController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &304836736
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304836735}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.8, y: 0.57, z: 1.72}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &304836737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304836735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 455c9eb79421596438324f83baeeb1ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monitorCam: {fileID: 1992381141}
+  playerController: {fileID: 7553057497742271025}
+  selector: {fileID: 7553057497742271025}
 --- !u!1 &344616337
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,6 +800,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7553057497742271007}
   m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &476936545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 476936546}
+  m_Layer: 0
+  m_Name: IrisFocusPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &476936546
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476936545}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.17, y: 0.38, z: -3.53}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 30010475}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &485438925
 GameObject:
@@ -1065,7 +1253,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619563399
 GameObject:
@@ -1648,6 +1836,116 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.3908411
   m_Center: {x: 0, y: 0.39084163, z: 0}
+--- !u!1 &935021327 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 125852, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+  m_PrefabInstance: {fileID: 1565457710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &935021328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935021327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a5473918a168c44fa0294bd4d1399f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conversationEvents:
+    onConversationStart:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 304836737}
+          m_TargetAssemblyTypeName: CinemachineFocusToggle, Assembly-CSharp
+          m_MethodName: ToggleFocus
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onConversationEnd:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 304836737}
+          m_TargetAssemblyTypeName: CinemachineFocusToggle, Assembly-CSharp
+          m_MethodName: ToggleFocus
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    runOnConversationEndEventsAtEndOfFrame: 0
+    onConversationCancelled:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationLineEarly:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationLine:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationLineEnd:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationLineCancelled:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationResponseMenu:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationResponseMenuTimeout:
+      m_PersistentCalls:
+        m_Calls: []
+    onLinkedConversationStart:
+      m_PersistentCalls:
+        m_Calls: []
+  barkEvents:
+    onBarkStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onBarkEnd:
+      m_PersistentCalls:
+        m_Calls: []
+    onBarkLine:
+      m_PersistentCalls:
+        m_Calls: []
+  sequenceEvents:
+    onSequenceStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onSequenceEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  questEvents:
+    onQuestStateChange:
+      m_PersistentCalls:
+        m_Calls: []
+    onQuestTrackingEnabled:
+      m_PersistentCalls:
+        m_Calls: []
+    onQuestTrackingDisabled:
+      m_PersistentCalls:
+        m_Calls: []
+    onUpdateQuestTracker:
+      m_PersistentCalls:
+        m_Calls: []
+  pauseEvents:
+    onDialogueSystemPause:
+      m_PersistentCalls:
+        m_Calls: []
+    onDialogueSystemUnpause:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &1028513131
 GameObject:
   m_ObjectHideFlags: 0
@@ -1899,7 +2197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455c9eb79421596438324f83baeeb1ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monitorCam: {fileID: 619563400}
+  monitorCam: {fileID: 1992381141}
   playerController: {fileID: 7553057497742271025}
   selector: {fileID: 7553057497742271025}
 --- !u!4 &1332799002
@@ -1915,7 +2213,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1360630837 stripped
 Transform:
@@ -2083,7 +2381,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1402827283
 PrefabInstance:
@@ -2179,7 +2477,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1565457710
 PrefabInstance:
@@ -2323,7 +2621,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1617224947
 GameObject:
@@ -3439,7 +3737,7 @@ GameObject:
   - component: {fileID: 1992381142}
   - component: {fileID: 1992381141}
   m_Layer: 0
-  m_Name: IrisCloseupCam
+  m_Name: IrisZoomCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3464,7 +3762,7 @@ MonoBehaviour:
   m_Priority: 5
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 30010475}
-  m_Follow: {fileID: 30010475}
+  m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 40
     OrthographicSize: 10
@@ -3490,14 +3788,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1992381140}
-  m_LocalRotation: {x: -0.0000000074379614, y: 0.0000000059564753, z: -7.951915e-10, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -21.400297}
-  m_LocalScale: {x: 2.1400297, y: 2.1400297, z: 2.1400297}
+  m_LocalRotation: {x: 0.082862996, y: -0.000000029757782, z: 0.0000000024743283, w: 0.996561}
+  m_LocalPosition: {x: 2.8, y: 0.73, z: 1.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2141652315}
-  m_Father: {fileID: 30010475}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2057385502
 PrefabInstance:
